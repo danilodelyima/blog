@@ -4,6 +4,8 @@
 
 <% @articles.each do |i|  %>
 	<td><%= i.title %></td>
-	<td><p><%= i.text %></p>></td>
+	<td><p><%= i.text %></p></td>
+	<%= link_to "ler mais", i %>
 	<br>
 <% end %>
+
