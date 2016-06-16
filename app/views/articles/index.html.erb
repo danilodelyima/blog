@@ -2,10 +2,13 @@
 
 <%= link_to "New article", new_article_path %>
 
-<% @articles.each do |i|  %>
-	<td><%= i.title %></td>
-	<td><p><%= i.text %></p></td>
-	<%= link_to "ler mais", i %>
+<% @articles.each do |article|  %>
+	<p>
+	<h3><%= article.title %> </h3>
+	<%= article.text %> <br>
+	<%= link_to "ler mais", article %>
+	<%= link_to "Editar", edit_article_path(article.id) %>
+	</p>
 	<br>
 <% end %>
 
