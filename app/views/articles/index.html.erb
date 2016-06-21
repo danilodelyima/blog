@@ -8,6 +8,9 @@
 	<%= article.text %> <br>
 	<%= link_to "ler mais", article %>
 	<%= link_to "Editar", edit_article_path(article.id) %>
+	<%= link_to "Deletar", article_path(article.id), method: :delete,
+	data: {confirm: 'Tem certeza?'} %>
+
 	</p>
 	<br>
 <% end %>
