@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
 
 	before_action :set_article, only: [:show, :edit, :update, :destroy]
 
-	#Recebe todo os artigos do banco de dados e armazena em @articles
+	# Recebe todo os artigos do banco de dados e armazena em @articles
 	def index
 		@articles = Article.all 
 	end
@@ -12,11 +12,12 @@ class ArticlesController < ApplicationController
 		@article = Article.new 
 	end
 
-	# Recebe os inputs do form (params), então, salva se as condições forem verdadeiras,
+	# Recebe do form o hash (params), extrai dele a chave article
+	# Então, salva se as condições forem verdadeiras.
 	# se não renderiza a página mostrando o(s) erro(s).
 	# POST
 	def create
-		#render plain: params
+		# render plain: params
 		@article = Article.new article_params
 		if @article.save
 			redirect_to articles_path
@@ -25,17 +26,13 @@ class ArticlesController < ApplicationController
 		end
 	end
 
-
-	#Salva em @articles o objeto com o parâmetro
 	def show  
 	end
 
 	def edit 
 	end	
 
-	
 	def update
-		@article = Article.find(params[:id])
 		if @article.update(article_params)
 			redirect_to article_path(@article.id)
 		else
@@ -50,12 +47,13 @@ class ArticlesController < ApplicationController
 
 	private
 
-	#Limita os campos dos quais o user pode submeter,
-	#O método permit, retorna um hash com o que você permitiu
+	# Limita os campos dos quais o user pode submeter,
+	# O método permit, retorna um hash com o que você permitiu
 	def article_params
 		params.require(:article).permit(:title, :text)
 	end
 
+	# Armazena em article o objeto encontrado através do :id 
 	def set_article
 		@article = Article.find(params[:id])
 	end
