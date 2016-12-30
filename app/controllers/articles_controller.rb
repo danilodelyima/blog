@@ -55,6 +55,8 @@ class ArticlesController < ApplicationController
 
 	# Armazena em article o objeto encontrado através do :id 
 	def set_article
+		# render plain: params
+		# extrai o ID da rota
 		@article = Article.find(params[:id])
 	end
 
